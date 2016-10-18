@@ -1,0 +1,50 @@
+var $ = function(i) {return document.getElementById(i)}, userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+
+function endFrame() {
+	
+}
+	
+function init() {
+	
+	//FRAME	1
+	TweenLite.to( $('bkg'), 1, {opacity:1, y:'50px', ease:Power3.easeOut, delay:0.2});
+	TweenLite.to( $('office365'), 1, {opacity:1, y:'35px', ease:Power3.easeOut, delay: 0.4});
+	TweenLite.to( $('logo'), 1, {opacity:1, delay:1});
+	
+	//FRAME 2
+	TweenLite.to( $('office365'), 0.6, {opacity:1, scale:0.7, css:{transform:'scale(0.72, 0.72) translate(-30px, 10px)'}, ease:Power3.easeOut , delay:1.6});
+	TweenLite.to( $('bkg'), 0.6, {css:{transform:'translate(0px, 0px)'}, ease:Power3.easeOut, delay:1.6});
+	
+	//FRAME 3
+	TweenLite.to( $('getmoredone'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 2.5});
+	TweenLite.to( $('t1-1'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 4});
+	TweenLite.to( $('t1-2'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 4.4});	
+	TweenLite.to( $('t1-1'), 0.4, {opacity:0, delay: 6});
+	TweenLite.to( $('t1-2'), 0.4, {opacity:0, delay: 6});
+	
+	//FRAME 4
+	TweenLite.to( $('t2-1'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 6.5});
+	TweenLite.to( $('t2-2'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 6.9});
+	TweenLite.to( $('t2-1'), 0.4, {opacity:0, delay: 9});
+	TweenLite.to( $('t2-2'), 0.4, {opacity:0, delay: 9});
+	
+	//FRAME 5
+	TweenLite.to( $('t3-1'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 9.5});
+	TweenLite.to( $('t3-2'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 9.9});
+	TweenLite.to( $('t3-1'), 0.4, {opacity:0, delay: 12});
+	TweenLite.to( $('t3-2'), 0.4, {opacity:0, delay: 12});
+	
+	//FRAME 6
+	TweenLite.to( $('t4-1'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 12.5});
+	TweenLite.to( $('t4-2'), 0.8, {opacity:1, left:'0px', ease:Power3.easeOut, delay: 12.9});
+		
+	//ENDFRAME
+	TweenLite.to( $('cta'), 0.4, {left:'170px', opacity:1, delay:14});
+	TweenLite.to( $('cta'), 0.2, {scale:1.05, delay:14.4});
+	TweenLite.to( $('cta'), 0.1, {scale:1, delay:14.6});
+	
+	TweenLite.to( $('cta'), 0.2, {scale:1.05, delay:15.4});
+	TweenLite.to( $('cta'), 0.1, {scale:1, delay:15.6});
+}
+init();

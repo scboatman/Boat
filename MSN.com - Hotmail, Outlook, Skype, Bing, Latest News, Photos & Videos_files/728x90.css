@@ -1,0 +1,260 @@
+body {
+  font-family: arial, helvetica, sans-serif;
+  margin: 0;
+}
+body.show-isi #scrolling-isi {
+  margin: 0;
+}
+body.show-isi #scrolling-isi #isi-container {
+  overflow: visible;
+  border-width: 0;
+}
+body.show-isi #scrolling-isi #isi-scroller {
+  display: none;
+}
+body.show-isi #scrolling-isi #isi {
+  background-color: #fff;
+}
+body.show-isi #wrapper {
+  border-width: 0;
+  overflow: visible;
+}
+
+div {
+  position: absolute;
+}
+
+#wrapper {
+  width: 726px;
+  height: 88px;
+  border-style: solid;
+  border-color: #999;
+  border-width: 1px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  background: transparent url(bullet.png) no-repeat 3px 3px;
+  background-size: 4px 4px;
+  font-size: 1em;
+  height: auto;
+  padding: 0 0 5px 15px;
+}
+ul li ul {
+  margin-top: 5px;
+}
+ul li ul li {
+  background: transparent url(dash.png) no-repeat 0px 4px;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.right {
+  text-align: right;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+  width: 100%;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.opaque {
+  opacity: 1;
+}
+
+.sprite {
+  background: url(sprite.png) no-repeat;
+  -moz-transition: opacity, 0.5s;
+  -o-transition: opacity, 0.5s;
+  -webkit-transition: opacity, 0.5s;
+  transition: opacity, 0.5s;
+}
+.sprite.isi-logo {
+  background-position: 0 -355px;
+  position: relative;
+  width: 243px;
+  height: 47px;
+  margin: 10px auto 10px auto;
+}
+.sprite.text-1 {
+  background-position: -11px -103px;
+  width: 371px;
+  height: 53px;
+  margin: 20px 0 0 17px;
+}
+.sprite.text-2 {
+  background-position: -172px -262px;
+  width: 394px;
+  height: 76px;
+  margin: 10px 0 0 17px;
+}
+.sprite.logo {
+  background-position: -263px -172px;
+  width: 135px;
+  height: 92px;
+  margin: 0 0 0 62px;
+}
+.sprite.text-3 {
+  background-position: 0 -264px;
+  width: 107px;
+  height: 46px;
+  margin: 11px 0 0 231px;
+}
+.sprite.cta {
+  background-position: 0 -314px;
+  width: 115px;
+  height: 30px;
+  margin: 55px 0 0 226px;
+}
+
+#animation {
+  position: absolute;
+  margin: 0;
+  width: 417px;
+  height: 90px;
+  cursor: pointer;
+}
+
+#pi {
+  margin-left: 417px;
+  background-color: #7399c6;
+  height: 15px;
+  width: 309px;
+  font-size: 10px;
+  color: #fff;
+}
+#pi p {
+  color: #ddd5e0;
+  float: left;
+  margin: 0;
+  padding: 0;
+  display: block;
+  margin-top: 1px;
+  padding: 0 5px 0 10px;
+}
+#pi p:nth-of-type(2) {
+  float: left;
+}
+#pi p a {
+  color: #ddd5e0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#scrolling-isi {
+  margin: 13px 0 0 417px;
+  width: 304px;
+  height: 70px;
+  -moz-transition-property: margin-top;
+  -o-transition-property: margin-top;
+  -webkit-transition-property: margin-top;
+  transition-property: margin-top;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  z-index: 1;
+  border-style: solid;
+  border-color: #7399c6;
+  border-width: 3px;
+}
+#scrolling-isi div {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#scrolling-isi #isi-scroller {
+  width: 6px;
+  height: 100%;
+  position: absolute;
+}
+#scrolling-isi #isi-container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: #fff;
+}
+#scrolling-isi #isi-container #isi {
+  width: 95%;
+  margin: 0 0 0 5px;
+}
+
+#isi {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.2;
+}
+#isi sup {
+  font-size: 9px;
+}
+#isi a {
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#isi h1, #isi h2 {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 5px 0 0px 0;
+  color: #ff9933;
+  margin: 0;
+}
+#isi h1:first-of-type, #isi h2:first-of-type {
+  padding: 5px 0 0 0;
+}
+#isi h3 {
+  font-weight: bold;
+  margin: 5px 0 5px 0;
+  font-size: 12px;
+}
+#isi h4 {
+  font-weight: bold;
+  margin: 0;
+}
+#isi p {
+  margin: 10px 0 10px 0;
+  line-height: 1.2;
+}
+#isi .shorten {
+    margin-top:5px;
+}
+#isi .shorten2 {
+    margin-top:0px;
+    margin-bottom:7px;
+}
+#isi .icon {
+  margin-left: -4px;
+}
+#isi .isi-footer {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub { 
+  top: 0.4em; 
+}

@@ -1,0 +1,121 @@
+var autoScroll = (function () {
+    var b;
+    var t;
+    var timer;
+    var isiContent = document.getElementById('isi-container');
+
+    function setTimer() {                            //PAUSE TIMER 
+        //Clear out timeout if already set
+        if (typeof timer === 'number') {
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(function () {
+            if (autoScroll.aScroll === true) {
+                autoScroller(isiContent, 'bottom');
+            }
+        }, 5000);
+    }
+
+    function autoScroller(target, dir, repeat) {       //AUTOSCROLL CALL
+        //if target.clientHeight = 0, retry after window load
+        if (target.clientHeight === 0) {
+            window.addEventListener('load', function () {
+                autoScroller(target, dir, repeat);
+            });
+
+            return;
+        }
+
+        var isi = target;
+        var scrollBottom = isi.scrollHeight - isi.clientHeight;
+        repeat = (typeof repeat === 'boolean') ? repeat : false;
+
+        //Clear out timeout
+        if (typeof timer === 'number') {
+            clearTimeout(timer);
+        }
+
+        //Remove event listener from isi
+        isi.removeEventListener('scroll', setTimer);
+
+        if (isi.clientHeight == isi.scrollHeight) {   //double-check if loaded too fast
+            setTimeout(function () {
+                if (isi.clientHeight != isi.scrollHeight) {
+                    scrollBottom = isi.scrollHeight - isi.clientHeight;
+                }
+            }, 20);
+        }
+
+        switch (dir) {
+            case 'bottom':
+                b = setInterval(function () {
+                    if (isi.scrollTop < scrollBottom) {
+                        isi.scrollTop += 1;
+                    }
+                    else {
+                        clearInterval(b);
+                        b = undefined;  //empty 'b'
+
+                        setTimeout(function () {
+                            autoScroller(isiContent, 'top');
+                        }, 500);
+                    }
+                }, 80);
+                break;
+            case 'top':
+                t = setInterval(function () {
+                    if (isi.scrollTop > 0) {
+                        isi.scrollTop -= 5;
+                    }
+                    else {
+                        clearInterval(t);
+                        t = undefined;  //empty 't'
+
+                        if (repeat === true) {
+                            setTimeout(function () {
+                                autoScroller(isiContent, 'bottom');
+                            }, 500);
+                        }
+                    }
+                }, 5);
+                break;
+            case 'pause':
+                if (typeof b === 'number') {
+                    clearInterval(b);
+                    setTimer();
+                    isi.addEventListener('scroll', setTimer);   //for when user uses mouse wheel or trackpad to scroll 
+                }
+                else if (typeof t === 'number') {
+                    clearInterval(t);
+                    setTimer();
+                    isi.addEventListener('scroll', setTimer);   //for when user uses mouse wheel or trackpad to scroll
+                }
+                break;
+        }
+    }
+
+    return {
+        'aScroll': false,
+        'pause': function () {                        //PAUSE
+            if (isiContent)
+                autoScroller(isiContent, 'pause');
+        },
+        'init': function () {                        //INIT
+            //reference to ISI wrapper
+            isiContent = document.getElementById("isi-container");
+
+            //Call autoscroll
+            autoScroller(isiContent, 'bottom');
+            this.aScroll = true;
+
+            //Pause on user interaction
+            isiContent.addEventListener('mousedown', function () {
+                autoScroller(isiContent, 'pause');
+            });
+            isiContent.addEventListener('wheel', function () {
+                autoScroller(isiContent, 'pause');
+            });
+        }
+    };
+}());

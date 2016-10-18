@@ -1,0 +1,109 @@
+window.onload = function () {
+    if (Enabler.isInitialized()) {
+        init();
+    } else {
+        Enabler.addEventListener(studio.events.StudioEvent.INIT, init);
+    }
+};
+
+function init() {
+    //Activate autoscroll
+    setTimeout(function () {
+        autoScroll.init();
+    }, 7200);
+    setClicks();
+    animate();
+}
+
+function animate() {
+    setTimeout(function () {
+        removeClass('text-1', 'hide');
+    }, 0);
+    setTimeout(function () {
+        addClass('text-1', 'hide');
+        removeClass('text-2', 'hide');
+    }, 3000);
+    setTimeout(function () {
+        addClass('text-1, text-2', 'hide');
+        removeClass('text-3, logo', 'hide');
+    }, 6500);
+    setTimeout(function () {
+        removeClass('cta', 'hide');
+    }, 6800);
+}
+
+function setClicks() {
+    document.getElementById('animation').addEventListener('click', function () {
+        exitHandlerMain();
+    });
+
+     document.getElementById('isi-link').addEventListener('click', function () {
+        exitHandlerISI();
+    });
+
+
+    document.getElementById('pi-link').addEventListener('click', function () {
+        exitHandlerPi();
+    });
+
+
+    document.getElementById('isi-link2').addEventListener('click', function () {
+        exitHandlerISI2();
+    });
+
+   
+    document.getElementById('fda-link').addEventListener('click', function () {
+        exitHandlerFDA();
+    });
+
+  
+}
+
+function exitHandlerMain() {
+    Enabler.exit('clickTag1');
+}
+
+function exitHandlerISI() {
+    Enabler.exit('clickTag2');
+}
+
+
+function exitHandlerPi() {
+    Enabler.exit('clickTag3');
+}
+
+
+function exitHandlerISI2() {
+    Enabler.exit('clickTag4');
+}
+
+
+function exitHandlerFDA() {
+    Enabler.exit('clickTag5');
+}
+
+
+
+
+function hasClass(element, clsName) {
+    return element.className.match(new RegExp('(\\s|^)' + clsName + '(\\s|$)'));
+}
+
+function addClass(elements, clsName) {
+    elements = elements.replace(/\s+/g, '');
+    var elementsArray = elements.split(',');
+    for (var i = 0; i < elementsArray.length; i++) {
+        var element = document.getElementById(elementsArray[i]);
+        element.className += " " + clsName;
+    }
+}
+
+function removeClass(elements, clsName) {
+    elements = elements.replace(/\s+/g, '');
+    var elementsArray = elements.split(',');
+    for (var i = 0; i < elementsArray.length; i++) {
+        var element = document.getElementById(elementsArray[i]);
+        var reg = new RegExp('(\\s|^)' + clsName + '(\\s|$)');
+        element.className = element.className.replace(reg, '');
+    }
+}
